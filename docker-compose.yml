@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: base4-custom-fitness
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - BUSINESS_EMAIL=${BUSINESS_EMAIL}
+      - BUSINESS_PHONE=${BUSINESS_PHONE}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - base4-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: base4-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - base4-network
+
+networks:
+  base4-network:
+    driver: bridge
+
+# Instruções de uso:
+# 
+# 1. Instale Docker e Docker Compose
+# 2. Configure as variáveis de ambiente no arquivo .env
+# 3. Execute: docker-compose up -d
+# 
+# Comandos úteis:
+# - Ver logs: docker-compose logs -f app
+# - Parar: docker-compose down
+# - Reconstruir: docker-compose up -d --build
