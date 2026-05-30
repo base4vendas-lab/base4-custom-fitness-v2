@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 // Configurar transporter de email (usar seu próprio SMTP ou serviço)
 const transporter = nodemailer.createTransport({
@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 
 // Rota para servir o HTML principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // API para processar contatos
