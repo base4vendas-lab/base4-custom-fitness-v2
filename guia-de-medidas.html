@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Medidas e Provador Virtual | B4 Custom Fitness</title>
+<meta name="description" content="Encontre o tamanho ideal para suas peças fitness personalizadas. Tabela de medidas e provador virtual da B4 Custom Fitness.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1E1E1E;--bg2:#252525;--bg3:#2c2c2c;
+  --text:#C6C6C6;--dim:#888;
+  --acc:#ED8B00;--white:#F5F5F5;--green:#2ecc71;
+  --fh:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--acc);border-radius:2px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(30,30,30,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(237,139,0,.1)}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.nl-mark{font-family:var(--fh);font-weight:900;font-size:1.7rem;color:var(--acc);letter-spacing:-.02em;line-height:1}
+.nl-sub{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.nav-back{display:flex;align-items:center;gap:.4rem;color:var(--dim);text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-back:hover{color:var(--acc)}
+.nav-cta{background:var(--acc);color:#000;font-weight:800;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:2px;text-decoration:none}
+
+.page-head{padding:9rem 5vw 2rem}
+.sec-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.65rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.sec-tag::before{content:'';display:block;width:18px;height:1px;background:var(--acc)}
+h1{font-family:var(--fh);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:900;line-height:1;color:var(--white);letter-spacing:-.02em;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--acc)}
+.page-desc{color:var(--dim);max-width:620px;line-height:1.7;font-size:.92rem}
+
+section{padding:3rem 5vw}
+h2{font-family:var(--fh);font-size:1.8rem;font-weight:800;color:var(--white);margin-bottom:1.5rem;letter-spacing:.01em}
+h2 em{font-style:normal;color:var(--acc)}
+
+/* PROVADOR VIRTUAL — SIZE FINDER */
+.finder-box{
+  background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:6px;
+  padding:2.5rem;max-width:640px;
+}
+.finder-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.finder-tab{
+  padding:.6rem 1.2rem;border-radius:2px;
+  background:var(--bg3);color:var(--dim);
+  font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid transparent;cursor:pointer;transition:all .2s;
+}
+.finder-tab.active{background:rgba(237,139,0,.15);color:var(--acc);border-color:rgba(237,139,0,.3)}
+
+.finder-field{margin-bottom:1.5rem}
+.finder-label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:.6rem}
+.finder-input-row{display:flex;align-items:center;gap:1rem}
+.finder-slider{
+  flex:1;-webkit-appearance:none;height:4px;border-radius:2px;
+  background:var(--bg3);outline:none;
+}
+.finder-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--acc);cursor:pointer;border:3px solid var(--bg2);
+  box-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+.finder-slider::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:var(--acc);
+  cursor:pointer;border:3px solid var(--bg2);
+}
+.finder-val{
+  font-family:var(--fh);font-size:1.3rem;font-weight:800;color:var(--white);
+  min-width:70px;text-align:right;
+}
+.finder-val span{color:var(--acc);font-size:.9rem;font-weight:600}
+
+.finder-btn{
+  width:100%;background:var(--acc);color:#000;font-weight:800;font-size:.9rem;
+  letter-spacing:.08em;text-transform:uppercase;padding:1rem;border:none;border-radius:2px;
+  cursor:pointer;transition:background .2s,transform .2s;margin-top:.5rem;
+}
+.finder-btn:hover{background:#ff9e0d;transform:translateY(-2px)}
+
+.finder-result{
+  display:none;margin-top:2rem;padding:2rem;
+  background:var(--bg3);border:1px solid rgba(237,139,0,.25);border-radius:4px;
+  text-align:center;
+}
+.finder-result.show{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.result-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem}
+.result-size{font-family:var(--fh);font-size:4rem;font-weight:900;color:var(--acc);line-height:1}
+.result-note{font-size:.85rem;color:var(--text);margin-top:.75rem;max-width:400px;margin-left:auto;margin-right:auto}
+.result-wa{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;
+  background:#000;color:var(--acc);font-weight:800;font-size:.8rem;
+  letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1.75rem;border-radius:2px;
+  text-decoration:none;transition:transform .2s;
+}
+.result-wa:hover{transform:translateY(-2px)}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.06);border-radius:4px;margin-bottom:2.5rem}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th{background:var(--bg3);color:var(--acc);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 1rem;text-align:left}
+td{padding:.8rem 1rem;font-size:.85rem;color:var(--text);border-top:1px solid rgba(255,255,255,.05)}
+tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.size-tag{display:inline-block;background:rgba(237,139,0,.12);color:var(--acc);font-weight:800;padding:.15rem .6rem;border-radius:2px;font-size:.8rem}
+
+.tip-box{background:var(--bg2);border-left:3px solid var(--acc);padding:1.25rem 1.5rem;border-radius:0 4px 4px 0;margin-bottom:2rem;font-size:.85rem;color:var(--text);line-height:1.7}
+.tip-box strong{color:var(--white)}
+
+footer{background:#111;padding:2.5rem 5vw;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+.footer-copy{font-size:.75rem;color:var(--dim)}
+.footer-copy span{color:var(--acc)}
+.footer-copy a{color:var(--dim);text-decoration:none}
+
+@media(max-width:600px){
+  .page-head{padding:7rem 1.25rem 1.5rem}
+  section{padding:2rem 1.25rem}
+  .finder-box{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nl-mark">B4</div>
+    <div class="nl-sub">Custom Fitness</div>
+  </a>
+  <a href="index.html" class="nav-back">← Voltar ao Site</a>
+  <a href="https://wa.me/5522997418993?text=Olá!+Preciso+de+ajuda+para+escolher+meu+tamanho." class="nav-cta" target="_blank">Ajuda</a>
+</nav>
+
+<div class="page-head">
+  <div class="sec-tag">Guia de Medidas</div>
+  <h1>ENCONTRE SEU<br><em>TAMANHO IDEAL</em></h1>
+  <p class="page-desc">Use o provador virtual abaixo para descobrir seu tamanho em segundos, ou consulte as tabelas de medidas detalhadas de cada peça.</p>
+</div>
+
+<!-- PROVADOR VIRTUAL -->
+<section>
+  <h2>PROVADOR <em>VIRTUAL</em></h2>
+  <div class="finder-box">
+    <div class="finder-tabs">
+      <button class="finder-tab active" data-cat="camiseta">Camiseta / Babylook</button>
+      <button class="finder-tab" data-cat="legging">Legging / Short</button>
+      <button class="finder-tab" data-cat="top">Top Fitness</button>
+    </div>
+
+    <div class="finder-field">
+      <label class="finder-label">Altura (cm)</label>
+      <div class="finder-input-row">
+        <input type="range" min="140" max="205" value="170" class="finder-slider" id="heightSlider">
+        <div class="finder-val" id="heightVal">170<span>cm</span></div>
+      </div>
+    </div>
+
+    <div class="finder-field">
+      <label class="finder-label">Peso (kg)</label>
+      <div class="finder-input-row">
+        <input type="range" min="35" max="150" value="70" class="finder-slider" id="weightSlider">
+        <div class="finder-val" id="weightVal">70<span>kg</span></div>
+      </div>
+    </div>
+
+    <div class="finder-field">
+      <label class="finder-label">Medida do busto/tórax (cm) <span style="color:var(--dim);text-transform:none;font-weight:400">— opcional, aumenta a precisão</span></label>
+      <div class="finder-input-row">
+        <input type="range" min="70" max="140" value="95" class="finder-slider" id="chestSlider">
+        <div class="finder-val" id="chestVal">95<span>cm</span></div>
+      </div>
+    </div>
+
+    <button class="finder-btn" id="findSizeBtn">Descobrir Meu Tamanho</button>
+
+    <div class="finder-result" id="finderResult">
+      <div class="result-label">Tamanho recomendado</div>
+      <div class="result-size" id="resultSize">M</div>
+      <p class="result-note" id="resultNote">Baseado nas suas medidas, este é o tamanho ideal para um caimento confortável.</p>
+      <a href="#" id="resultWaLink" class="result-wa" target="_blank">Confirmar com um Atendente</a>
+    </div>
+  </div>
+</section>
+
+<!-- TABELA CAMISETAS -->
+<section>
+  <h2>TABELA — <em>CAMISETAS E BABYLOOK</em></h2>
+  <div class="tip-box">💡 <strong>Dica:</strong> para camisetas dry fit, prefira um tamanho mais justo ao corpo. Para algodão, o caimento tradicional é levemente solto.</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Tamanho</th><th>Altura (cm)</th><th>Peso (kg)</th><th>Tórax (cm)</th><th>Comprimento (cm)</th></tr>
+      <tr><td><span class="size-tag">PP</span></td><td>150 – 160</td><td>45 – 55</td><td>78 – 86</td><td>62</td></tr>
+      <tr><td><span class="size-tag">P</span></td><td>160 – 168</td><td>55 – 65</td><td>86 – 94</td><td>66</td></tr>
+      <tr><td><span class="size-tag">M</span></td><td>168 – 175</td><td>65 – 78</td><td>94 – 102</td><td>70</td></tr>
+      <tr><td><span class="size-tag">G</span></td><td>175 – 182</td><td>78 – 92</td><td>102 – 110</td><td>74</td></tr>
+      <tr><td><span class="size-tag">GG</span></td><td>182 – 190</td><td>92 – 108</td><td>110 – 118</td><td>78</td></tr>
+      <tr><td><span class="size-tag">XG</span></td><td>190+</td><td>108+</td><td>118+</td><td>82</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- TABELA LEGGINGS/SHORTS -->
+<section>
+  <h2>TABELA — <em>LEGGINGS E SHORTS</em></h2>
+  <div class="tip-box">💡 <strong>Dica:</strong> peças de poliamida premium têm alta elasticidade — em caso de dúvida entre dois tamanhos, opte pelo menor para melhor compressão.</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Tamanho</th><th>Cintura (cm)</th><th>Quadril (cm)</th><th>Peso (kg)</th></tr>
+      <tr><td><span class="size-tag">PP</span></td><td>60 – 66</td><td>86 – 92</td><td>45 – 52</td></tr>
+      <tr><td><span class="size-tag">P</span></td><td>66 – 72</td><td>92 – 98</td><td>52 – 60</td></tr>
+      <tr><td><span class="size-tag">M</span></td><td>72 – 80</td><td>98 – 106</td><td>60 – 70</td></tr>
+      <tr><td><span class="size-tag">G</span></td><td>80 – 88</td><td>106 – 114</td><td>70 – 82</td></tr>
+      <tr><td><span class="size-tag">GG</span></td><td>88 – 96</td><td>114 – 122</td><td>82 – 95</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- TABELA TOP -->
+<section>
+  <h2>TABELA — <em>TOP FITNESS</em></h2>
+  <div class="tip-box">💡 <strong>Dica:</strong> meça o busto na altura mais larga e o tórax logo abaixo do busto. Se os números indicarem tamanhos diferentes, priorize a medida do tórax para melhor sustentação.</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Tamanho</th><th>Tórax (cm)</th><th>Busto (cm)</th></tr>
+      <tr><td><span class="size-tag">P</span></td><td>68 – 76</td><td>80 – 88</td></tr>
+      <tr><td><span class="size-tag">M</span></td><td>76 – 84</td><td>88 – 96</td></tr>
+      <tr><td><span class="size-tag">G</span></td><td>84 – 92</td><td>96 – 104</td></tr>
+      <tr><td><span class="size-tag">GG</span></td><td>92 – 100</td><td>104 – 112</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-copy">© 2025 <span>B4 Custom Fitness</span>. Nova Friburgo, RJ. · <a href="index.html">Voltar ao site</a></p>
+</footer>
+
+<script>
+const heightSlider = document.getElementById('heightSlider');
+const weightSlider = document.getElementById('weightSlider');
+const chestSlider = document.getElementById('chestSlider');
+const heightVal = document.getElementById('heightVal');
+const weightVal = document.getElementById('weightVal');
+const chestVal = document.getElementById('chestVal');
+const tabs = document.querySelectorAll('.finder-tab');
+let activeCat = 'camiseta';
+
+heightSlider.addEventListener('input', () => heightVal.innerHTML = heightSlider.value + '<span>cm</span>');
+weightSlider.addEventListener('input', () => weightVal.innerHTML = weightSlider.value + '<span>kg</span>');
+chestSlider.addEventListener('input', () => chestVal.innerHTML = chestSlider.value + '<span>cm</span>');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeCat = tab.dataset.cat;
+    document.getElementById('finderResult').classList.remove('show');
+  });
+});
+
+function calcSize(cat, height, weight, chest){
+  // Lógica simplificada baseada em faixas por categoria
+  if(cat === 'camiseta'){
+    if(chest < 86 || weight < 55) return 'PP';
+    if(chest < 94 || weight < 65) return 'P';
+    if(chest < 102 || weight < 78) return 'M';
+    if(chest < 110 || weight < 92) return 'G';
+    if(chest < 118 || weight < 108) return 'GG';
+    return 'XG';
+  }
+  if(cat === 'legging'){
+    if(weight < 52) return 'PP';
+    if(weight < 60) return 'P';
+    if(weight < 70) return 'M';
+    if(weight < 82) return 'G';
+    return 'GG';
+  }
+  if(cat === 'top'){
+    if(chest < 76) return 'P';
+    if(chest < 84) return 'M';
+    if(chest < 92) return 'G';
+    return 'GG';
+  }
+  return 'M';
+}
+
+document.getElementById('findSizeBtn').addEventListener('click', () => {
+  const h = parseInt(heightSlider.value);
+  const w = parseInt(weightSlider.value);
+  const c = parseInt(chestSlider.value);
+  const size = calcSize(activeCat, h, w, c);
+
+  document.getElementById('resultSize').textContent = size;
+  document.getElementById('resultNote').textContent =
+    `Baseado na sua altura (${h}cm), peso (${w}kg) e medida (${c}cm), o tamanho ${size} é o mais indicado para essa peça.`;
+
+  const waMsg = encodeURIComponent(`Olá! Usei o provador virtual e o tamanho indicado foi ${size} (altura ${h}cm, peso ${w}kg). Quero confirmar e fazer meu pedido.`);
+  document.getElementById('resultWaLink').href = `https://wa.me/5522997418993?text=${waMsg}`;
+
+  document.getElementById('finderResult').classList.add('show');
+});
+</script>
+
+</body>
+</html>
